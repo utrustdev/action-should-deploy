@@ -67,7 +67,8 @@ function run() {
                     deployment_id: lastDeployment.id
                 });
                 const lastStatus = lodash_get_1.default(statuses, '0.state');
-                isDeployable = !(sha === lastDeployment.sha && VALID_DEPLOYMENT_STATUSES.includes(lastStatus));
+                isDeployable = !(sha === lastDeployment.sha &&
+                    VALID_DEPLOYMENT_STATUSES.includes(lastStatus));
             }
             core.setOutput('is_deployable', isDeployable.toString());
             core.setOutput('sha', sha);

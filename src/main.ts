@@ -24,30 +24,26 @@ async function run(): Promise<void> {
       typeof client.rest.repos.listDeploymentStatuses
     >
 
-    const {
-      data: deployments
-    }: DeploymentsListResponseType = await client.rest.repos.listDeployments({
-      owner: ctx.repo.owner,
-      repo: ctx.repo.repo,
-      environment,
-      page: 1,
-      per_page: 1
-    })
+    const {data: deployments}: DeploymentsListResponseType =
+      await client.rest.repos.listDeployments({
+        owner: ctx.repo.owner,
+        repo: ctx.repo.repo,
+        environment,
+        page: 1,
+        per_page: 1
+      })
 
     const lastDeployment = head(deployments)
 
     let isDeployable = true
 
     if (lastDeployment) {
-      const {
-        data: statuses
-      }: DeploymentStatusesListResponseType = await client.rest.repos.listDeploymentStatuses(
-        {
+      const {data: statuses}: DeploymentStatusesListResponseType =
+        await client.rest.repos.listDeploymentStatuses({
           owner: ctx.repo.owner,
           repo: ctx.repo.repo,
           deployment_id: lastDeployment.id
-        }
-      )
+        })
 
       const lastStatus = get(statuses, '0.state')
 
