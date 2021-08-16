@@ -1,9 +1,9 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import head from 'lodash.head'
-import get from 'lodash.get'
-
+// eslint-disable-next-line import/named
 import {GetResponseTypeFromEndpointMethod} from '@octokit/types'
+import get from 'lodash.get'
+import head from 'lodash.head'
 
 const VALID_DEPLOYMENT_STATUSES = ['success', 'pending', 'in_progress']
 
