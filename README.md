@@ -1,4 +1,4 @@
-# Github Action - Deploy to an S3-backed Cloudfront distribution
+# Github Action - Prevent deployments when no new changes
 
 Prevent deployments when the commit SHA and deployment SHA is the same
 
